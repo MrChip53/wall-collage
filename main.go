@@ -15,6 +15,7 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -29,6 +30,9 @@ var screenWidth = 1920
 var screenHeight = 1080
 
 func main() {
+	lockfile := lockFile()
+	defer unlockFile(lockfile)
+
 	flag.StringVar(&solid, "s", "#000000", "solid color for wallpaper")
 	flag.BoolVar(&hidden, "h", false, "use hidden files in folder")
 	flag.StringVar(&folder, "f", "", "wallpaper folder path")
@@ -188,4 +192,29 @@ func makeFolder(path string) error {
 		}
 	}
 	return nil
+}
+
+func lockFile() *os.File {
+	lockfile, err := os.OpenFile("/tmp/wall-collage.lock", os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		fmt.Println("Failed to open lock file:", err)
+		os.Exit(1)
+	}
+
+	err = syscall.Flock(int(lockfile.Fd()), syscall.LOCK_EX|syscall.LOCK_NB)
+	if err != nil {
+		fmt.Println("Another instance is already running.")
+		os.Exit(1)
+	}
+	return lockfile
+}
+
+func unlockFile(lockfile *os.File) {
+	defer func() {
+		err := syscall.Flock(int(lockfile.Fd()), syscall.LOCK_UN)
+		if err != nil {
+			fmt.Println("Failed to unlock file:", err)
+		}
+		lockfile.Close()
+	}()
 }
