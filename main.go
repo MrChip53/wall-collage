@@ -210,11 +210,9 @@ func lockFile() *os.File {
 }
 
 func unlockFile(lockfile *os.File) {
-	defer func() {
-		err := syscall.Flock(int(lockfile.Fd()), syscall.LOCK_UN)
-		if err != nil {
-			fmt.Println("Failed to unlock file:", err)
-		}
-		lockfile.Close()
-	}()
+	err := syscall.Flock(int(lockfile.Fd()), syscall.LOCK_UN)
+	if err != nil {
+		fmt.Println("Failed to unlock file:", err)
+	}
+	lockfile.Close()
 }
