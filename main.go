@@ -9,28 +9,32 @@ import (
 	_ "image/gif"
 	_ "image/jpeg"
 	"image/png"
-	_ "image/png"
 	"math/rand"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"slices"
 	"strings"
+	"time"
 )
 
 var folder string
 var hidden bool
 var collage bool
 var onlyHidden bool
+var solid string
+var sleep int
 
 var screenWidth = 1920
 var screenHeight = 1080
 
 func main() {
+	flag.StringVar(&solid, "s", "#000000", "solid color for wallpaper")
 	flag.BoolVar(&hidden, "h", false, "use hidden files in folder")
 	flag.StringVar(&folder, "f", "", "wallpaper folder path")
 	flag.BoolVar(&collage, "c", false, "create a collage of three images in folder")
 	flag.BoolVar(&onlyHidden, "o", false, "only use hidden files in folder")
+	flag.IntVar(&sleep, "t", 0, "time to change wallpaper in seconds")
 	flag.Parse()
 
 	if folder == "" {
@@ -63,23 +67,15 @@ func main() {
 		fmt.Println("Error:", err)
 	}
 
-	imgPath := imgPaths[rand.Intn(len(imgPaths))]
-	if collage {
-		imgPath, err = createCollage(getRandomImages(imgPaths, 3))
+	for {
+		err = setWallpaper(imgPaths)
 		if err != nil {
-			fmt.Println("Error creating collage:", err)
+			fmt.Println("Error setting wallpaper:", err)
 		}
-	}
-
-	mode := "full"
-	if onlyHidden || isHiddenFile(imgPath) {
-		mode = "fill"
-	}
-
-	bgCmd := fmt.Sprintf("hsetroot -solid \"#DB7923\" -%s \"%s\"", mode, imgPath)
-	err = exec.Command("sh", "-c", bgCmd).Run()
-	if err != nil {
-		fmt.Println("Error:", err)
+		if sleep == 0 {
+			break
+		}
+		time.Sleep(time.Duration(sleep) * time.Second)
 	}
 }
 
@@ -94,6 +90,30 @@ func isImageFile(path string) bool {
 		return true
 	}
 	return false
+}
+
+func setWallpaper(imgPaths []string) error {
+	imgPath := imgPaths[rand.Intn(len(imgPaths))]
+	if collage {
+		p, err := createCollage(getRandomImages(imgPaths, 3))
+		if err != nil {
+			fmt.Println("Error creating collage:", err)
+		} else {
+			imgPath = p
+		}
+	}
+
+	mode := "full"
+	if onlyHidden || isHiddenFile(imgPath) {
+		mode = "fill"
+	}
+
+	bgCmd := fmt.Sprintf("hsetroot -solid \"%s\" -%s \"%s\"", solid, mode, imgPath)
+	err := exec.Command("sh", "-c", bgCmd).Run()
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func getRandomImage(imgPaths []string, allowHidden bool, allowVisible bool, list []string) (string, bool) {
@@ -128,7 +148,6 @@ func createCollage(imgPaths []string) (string, error) {
 		if err != nil {
 			panic(err)
 		}
-		defer fmt.Println(file.Name())
 		defer file.Close()
 
 		img, _, err := image.Decode(file)
