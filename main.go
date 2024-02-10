@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/edwvee/exiffix"
 	"github.com/nfnt/resize"
 	"image"
 	"image/draw"
@@ -12,10 +13,7 @@ import (
 	"math/rand"
 	"os"
 	"os/exec"
-	"path/filepath"
-	"slices"
 	"strings"
-	"syscall"
 	"time"
 )
 
@@ -51,24 +49,13 @@ func main() {
 	err := makeFolder(folder + "/wall-collage")
 	if err != nil {
 		fmt.Println("Error creating wall-collage folder:", err)
+		os.Exit(1)
 	}
 
-	var imgPaths = make([]string, 0)
-
-	err = filepath.Walk(folder, func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		if info.IsDir() && path != folder {
-			return filepath.SkipDir
-		}
-		if !info.IsDir() && isImageFile(path) && ((isHiddenFile(path) && (hidden || onlyHidden)) || (!isHiddenFile(path) && !onlyHidden)) {
-			imgPaths = append(imgPaths, path)
-		}
-		return nil
-	})
+	imgPaths, err := scanFolder(folder)
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Println("Error scanning folder:", err)
+		os.Exit(1)
 	}
 
 	for {
@@ -83,67 +70,40 @@ func main() {
 	}
 }
 
-func isHiddenFile(path string) bool {
-	return strings.HasPrefix(filepath.Base(path), ".")
-}
-
-func isImageFile(path string) bool {
-	ext := strings.ToLower(filepath.Ext(path))
-	switch ext {
-	case ".jpg", ".jpeg", ".png", ".gif":
-		return true
-	}
-	return false
-}
-
 func setWallpaper(imgPaths []string) error {
-	imgPath := imgPaths[rand.Intn(len(imgPaths))]
+	var single bool
+	var imgPath string
+	var err error
+
+	imgPath = imgPaths[rand.Intn(len(imgPaths))]
 	if collage {
-		p, err := createCollage(getRandomImages(imgPaths, 3))
+		imgPath, single, err = createCollage(getRandomImages(imgPaths, 3))
 		if err != nil {
 			fmt.Println("Error creating collage:", err)
-		} else {
-			imgPath = p
+			imgPath = imgPaths[rand.Intn(len(imgPaths))]
 		}
 	}
 
 	mode := "full"
-	if onlyHidden || isHiddenFile(imgPath) {
+	if single || onlyHidden || isHiddenFile(imgPath) {
 		mode = "fill"
 	}
 
 	bgCmd := fmt.Sprintf("hsetroot -solid \"%s\" -%s \"%s\"", solid, mode, imgPath)
-	err := exec.Command("sh", "-c", bgCmd).Run()
+	err = exec.Command("sh", "-c", bgCmd).Run()
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func getRandomImage(imgPaths []string, allowHidden bool, allowVisible bool, list []string) (string, bool) {
-	p := imgPaths[rand.Intn(len(imgPaths))]
-	isHidden := isHiddenFile(p)
-	if (isHidden && !allowHidden) || (isHidden && len(list) > 0) || (!isHidden && !allowVisible) || slices.Contains(list, p) {
-		return getRandomImage(imgPaths, allowHidden, allowVisible, list)
-	}
-	return p, isHidden
-}
+func createCollage(imgPaths []string) (string, bool, error) {
+	//imgPaths = []string{
+	//	"/home/mrchip/.wallpapers/.20210602_163950.jpg",
+	//}
 
-func getRandomImages(imgPaths []string, num int) []string {
-	var result = make([]string, 0)
-	for i := 0; i < 3; i++ {
-		r, isHidden := getRandomImage(imgPaths, hidden || onlyHidden, !onlyHidden, result)
-		result = append(result, r)
-		if isHidden {
-			return result
-		}
-	}
-	return result
-}
-
-func createCollage(imgPaths []string) (string, error) {
 	if len(imgPaths) == 1 {
-		return imgPaths[0], nil
+		return imgPaths[0], true, nil
 	}
 
 	imageFiles := make([]image.Image, 0)
@@ -154,9 +114,9 @@ func createCollage(imgPaths []string) (string, error) {
 		}
 		defer file.Close()
 
-		img, _, err := image.Decode(file)
+		img, _, err := exiffix.Decode(file)
 		if err != nil {
-			return imgPaths[0], err
+			return imgPaths[0], true, err
 		}
 		img = resize.Resize(640, 1080, img, resize.Lanczos3)
 		imageFiles = append(imageFiles, img)
@@ -170,49 +130,14 @@ func createCollage(imgPaths []string) (string, error) {
 
 	output, err := os.Create(folder + "/wall-collage/collage.png")
 	if err != nil {
-		return imgPaths[0], err
+		return imgPaths[0], true, err
 	}
 	defer output.Close()
 
 	err = png.Encode(output, canvas)
 	if err != nil {
-		return imgPaths[0], err
+		return imgPaths[0], true, err
 	}
 
-	return folder + "/wall-collage/collage.png", nil
-}
-
-func makeFolder(path string) error {
-	if _, err := os.Stat(path); err != nil {
-		if os.IsNotExist(err) {
-			err := os.MkdirAll(path, os.ModePerm)
-			if err != nil {
-				return err
-			}
-		}
-	}
-	return nil
-}
-
-func lockFile() *os.File {
-	lockfile, err := os.OpenFile("/tmp/wall-collage.lock", os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		fmt.Println("Failed to open lock file:", err)
-		os.Exit(1)
-	}
-
-	err = syscall.Flock(int(lockfile.Fd()), syscall.LOCK_EX|syscall.LOCK_NB)
-	if err != nil {
-		fmt.Println("Another instance is already running.")
-		os.Exit(1)
-	}
-	return lockfile
-}
-
-func unlockFile(lockfile *os.File) {
-	err := syscall.Flock(int(lockfile.Fd()), syscall.LOCK_UN)
-	if err != nil {
-		fmt.Println("Failed to unlock file:", err)
-	}
-	lockfile.Close()
+	return folder + "/wall-collage/collage.png", false, nil
 }
