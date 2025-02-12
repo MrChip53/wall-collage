@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pb;pb";
+
+service WallCollage {
+  rpc Start(StartRequest) returns (StartResponse);
+  rpc Stop(StopRequest) returns (StopResponse);
+  rpc Status(StatusRequest) returns (StatusResponse);
+  rpc SetDelay(SetDelayRequest) returns (SetDelayResponse);
+  rpc SetBackgroundColor(SetBackgroundColorRequest) returns (SetBackgroundColorResponse);
+  rpc ToggleCollage(ToggleCollageRequest) returns (ToggleCollageResponse);
+
+  rpc ListFolders(ListFoldersRequest) returns (ListFoldersResponse);
+  rpc AddFolder(AddFolderRequest) returns (AddFolderResponse);
+  rpc RemoveFolder(RemoveFolderRequest) returns (RemoveFolderResponse);
+}
+
+message StartRequest {
+}
+
+message StartResponse {
+}
+
+message StopRequest {
+}
+
+message StopResponse {
+}
+
+message StatusRequest {
+}
+
+message StatusResponse {
+  string folder = 1;
+  int32 delay = 2;
+  string background_color = 3;
+  bool hidden_images = 4;
+  bool non_hidden_images = 5;
+  bool collage = 6;
+  bool is_running = 7;
+}
+
+message SetDelayRequest {
+  int32 delay = 1;
+}
+
+message SetDelayResponse {
+}
+
+message SetFolderRequest {
+  string folder = 1;
+}
+
+message SetFolderResponse {
+}
+
+message SetBackgroundColorRequest {
+  string color = 1;
+}
+
+message SetBackgroundColorResponse {
+}
+
+message ToggleCollageRequest {
+}
+
+message ToggleCollageResponse {
+  bool enabled = 1;
+}
+
+message ListFoldersRequest {
+}
+
+message ListFoldersResponse {
+  repeated string folders = 1;
+}
+
+message AddFolderRequest {
+  string folder = 1;
+}
+
+message AddFolderResponse {
+}
+
+message RemoveFolderRequest {
+  int32 folder_index = 1;
+}
+
+message RemoveFolderResponse {
+  repeated string folders = 1;
+}
