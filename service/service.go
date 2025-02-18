@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"slices"
+	"sync"
 	"time"
 
 	"wall-collage/notif"
@@ -33,6 +34,8 @@ type service struct {
 
 	collageCtx    context.Context
 	collageCancel context.CancelFunc
+
+	lock sync.Mutex
 }
 
 func NewService(folderPath string) (*service, error) {
@@ -106,6 +109,9 @@ func (s *service) setWallpaper(imgPaths []string) error {
 	var imgPath string
 	var err error
 
+	s.lock.Lock()
+	defer s.lock.Unlock()
+
 	if len(imgPaths) == 0 {
 		bgCmd := fmt.Sprintf("hsetroot -solid \"%s\"", s.bgColor)
 		err = exec.Command("sh", "-c", bgCmd).Run()
@@ -167,6 +173,9 @@ func (s *service) getRandomImage(imgPaths []string, list []string) (string, bool
 }
 
 func (s *service) scanFolders() {
+	s.lock.Lock()
+	defer s.lock.Unlock()
+
 	if len(s.folders) == 0 {
 		s.imgs = make([]string, 0)
 		return
