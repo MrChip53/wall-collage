@@ -247,6 +247,16 @@ func (s *service) Random(ctx context.Context, in *pb.RandomRequest) (*pb.RandomR
 	return &pb.RandomResponse{}, nil
 }
 
+func (s *service) SolidColor(ctx context.Context, in *pb.SolidColorRequest) (*pb.SolidColorResponse, error) {
+	s.sendNotification("Wall Collage", fmt.Sprintf("Setting solid color to %s", in.Color))
+	s.bgColor = in.Color
+	err := s.setWallpaper([]string{})
+	if err != nil {
+		return nil, err
+	}
+	return &pb.SolidColorResponse{}, nil
+}
+
 func (s *service) Status(ctx context.Context, in *pb.StatusRequest) (*pb.StatusResponse, error) {
 	log.Printf("Status request received")
 	return &pb.StatusResponse{
