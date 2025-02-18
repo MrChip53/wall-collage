@@ -274,14 +274,10 @@ func (s *service) AddFolder(ctx context.Context, in *pb.AddFolderRequest) (*pb.A
 }
 
 func (s *service) RemoveFolder(ctx context.Context, in *pb.RemoveFolderRequest) (*pb.RemoveFolderResponse, error) {
-	if int(in.FolderIndex) > len(s.folders)-1 {
-		return nil, fmt.Errorf("Folder index out of range")
-	}
-
 	newFolders := make([]string, 0)
 
-	for i, folder := range s.folders {
-		if i == int(in.FolderIndex) {
+	for _, folder := range s.folders {
+		if folder == in.FolderPath {
 			continue
 		}
 
@@ -290,6 +286,6 @@ func (s *service) RemoveFolder(ctx context.Context, in *pb.RemoveFolderRequest) 
 
 	s.folders = newFolders
 	s.scanFolders()
-	s.sendNotification("Wall Collage", fmt.Sprintf("Removed folder %d", in.FolderIndex))
+	s.sendNotification("Wall Collage", fmt.Sprintf("Removed folder %s", in.FolderPath))
 	return &pb.RemoveFolderResponse{}, nil
 }

@@ -7,6 +7,8 @@ option go_package = "./pb;pb";
 service WallCollage {
   rpc Start(StartRequest) returns (StartResponse);
   rpc Stop(StopRequest) returns (StopResponse);
+  rpc Random(RandomRequest) returns (RandomResponse);
+  rpc SolidColor(SolidColorRequest) returns (SolidColorResponse);
   rpc Status(StatusRequest) returns (StatusResponse);
   rpc SetDelay(SetDelayRequest) returns (SetDelayResponse);
   rpc SetBackgroundColor(SetBackgroundColorRequest) returns (SetBackgroundColorResponse);
@@ -27,6 +29,19 @@ message StopRequest {
 }
 
 message StopResponse {
+}
+
+message RandomRequest {
+}
+
+message RandomResponse {
+}
+
+message SolidColorRequest {
+  string color = 1;
+}
+
+message SolidColorResponse {
 }
 
 message StatusRequest {
@@ -85,7 +100,7 @@ message AddFolderResponse {
 }
 
 message RemoveFolderRequest {
-  int32 folder_index = 1;
+  string folder_path = 1;
 }
 
 message RemoveFolderResponse {

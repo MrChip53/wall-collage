@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"strconv"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -68,18 +67,13 @@ var removeFolderCmd = &cobra.Command{
 			log.Fatalf("usage: wall-collage folder rm <index>")
 		}
 
-		idx, err := strconv.Atoi(args[0])
-		if err != nil {
-			log.Fatalf("index must be an integer")
-		}
-
 		client, conn := client.NewClient(socketPath)
 		defer conn.Close()
 
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
 
-		r, err := client.RemoveFolder(ctx, &pb.RemoveFolderRequest{FolderIndex: int32(idx)})
+		r, err := client.RemoveFolder(ctx, &pb.RemoveFolderRequest{FolderPath: args[0]})
 		if err != nil {
 			log.Fatalf("could not remove folder: %v", err)
 		}

@@ -172,6 +172,167 @@ func (*StopResponse) Descriptor() ([]byte, []int) {
 	return file_service_proto_rawDescGZIP(), []int{3}
 }
 
+type RandomRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *RandomRequest) Reset() {
+	*x = RandomRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RandomRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RandomRequest) ProtoMessage() {}
+
+func (x *RandomRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RandomRequest.ProtoReflect.Descriptor instead.
+func (*RandomRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{4}
+}
+
+type RandomResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *RandomResponse) Reset() {
+	*x = RandomResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RandomResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RandomResponse) ProtoMessage() {}
+
+func (x *RandomResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RandomResponse.ProtoReflect.Descriptor instead.
+func (*RandomResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{5}
+}
+
+type SolidColorRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Color string `protobuf:"bytes,1,opt,name=color,proto3" json:"color,omitempty"`
+}
+
+func (x *SolidColorRequest) Reset() {
+	*x = SolidColorRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SolidColorRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SolidColorRequest) ProtoMessage() {}
+
+func (x *SolidColorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SolidColorRequest.ProtoReflect.Descriptor instead.
+func (*SolidColorRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *SolidColorRequest) GetColor() string {
+	if x != nil {
+		return x.Color
+	}
+	return ""
+}
+
+type SolidColorResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *SolidColorResponse) Reset() {
+	*x = SolidColorResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SolidColorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SolidColorResponse) ProtoMessage() {}
+
+func (x *SolidColorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SolidColorResponse.ProtoReflect.Descriptor instead.
+func (*SolidColorResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{7}
+}
+
 type StatusRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -181,7 +342,7 @@ type StatusRequest struct {
 func (x *StatusRequest) Reset() {
 	*x = StatusRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[4]
+		mi := &file_service_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -194,7 +355,7 @@ func (x *StatusRequest) String() string {
 func (*StatusRequest) ProtoMessage() {}
 
 func (x *StatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[4]
+	mi := &file_service_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -207,7 +368,7 @@ func (x *StatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusRequest.ProtoReflect.Descriptor instead.
 func (*StatusRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{4}
+	return file_service_proto_rawDescGZIP(), []int{8}
 }
 
 type StatusResponse struct {
@@ -227,7 +388,7 @@ type StatusResponse struct {
 func (x *StatusResponse) Reset() {
 	*x = StatusResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[5]
+		mi := &file_service_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -240,7 +401,7 @@ func (x *StatusResponse) String() string {
 func (*StatusResponse) ProtoMessage() {}
 
 func (x *StatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[5]
+	mi := &file_service_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -253,7 +414,7 @@ func (x *StatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusResponse.ProtoReflect.Descriptor instead.
 func (*StatusResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{5}
+	return file_service_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *StatusResponse) GetFolder() string {
@@ -316,7 +477,7 @@ type SetDelayRequest struct {
 func (x *SetDelayRequest) Reset() {
 	*x = SetDelayRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[6]
+		mi := &file_service_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -329,7 +490,7 @@ func (x *SetDelayRequest) String() string {
 func (*SetDelayRequest) ProtoMessage() {}
 
 func (x *SetDelayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[6]
+	mi := &file_service_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -342,7 +503,7 @@ func (x *SetDelayRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetDelayRequest.ProtoReflect.Descriptor instead.
 func (*SetDelayRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{6}
+	return file_service_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SetDelayRequest) GetDelay() int32 {
@@ -361,7 +522,7 @@ type SetDelayResponse struct {
 func (x *SetDelayResponse) Reset() {
 	*x = SetDelayResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[7]
+		mi := &file_service_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -374,7 +535,7 @@ func (x *SetDelayResponse) String() string {
 func (*SetDelayResponse) ProtoMessage() {}
 
 func (x *SetDelayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[7]
+	mi := &file_service_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,7 +548,7 @@ func (x *SetDelayResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetDelayResponse.ProtoReflect.Descriptor instead.
 func (*SetDelayResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{7}
+	return file_service_proto_rawDescGZIP(), []int{11}
 }
 
 type SetFolderRequest struct {
@@ -401,7 +562,7 @@ type SetFolderRequest struct {
 func (x *SetFolderRequest) Reset() {
 	*x = SetFolderRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[8]
+		mi := &file_service_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -414,7 +575,7 @@ func (x *SetFolderRequest) String() string {
 func (*SetFolderRequest) ProtoMessage() {}
 
 func (x *SetFolderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[8]
+	mi := &file_service_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -427,7 +588,7 @@ func (x *SetFolderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetFolderRequest.ProtoReflect.Descriptor instead.
 func (*SetFolderRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{8}
+	return file_service_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SetFolderRequest) GetFolder() string {
@@ -446,7 +607,7 @@ type SetFolderResponse struct {
 func (x *SetFolderResponse) Reset() {
 	*x = SetFolderResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[9]
+		mi := &file_service_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -459,7 +620,7 @@ func (x *SetFolderResponse) String() string {
 func (*SetFolderResponse) ProtoMessage() {}
 
 func (x *SetFolderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[9]
+	mi := &file_service_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -472,7 +633,7 @@ func (x *SetFolderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetFolderResponse.ProtoReflect.Descriptor instead.
 func (*SetFolderResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{9}
+	return file_service_proto_rawDescGZIP(), []int{13}
 }
 
 type SetBackgroundColorRequest struct {
@@ -486,7 +647,7 @@ type SetBackgroundColorRequest struct {
 func (x *SetBackgroundColorRequest) Reset() {
 	*x = SetBackgroundColorRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[10]
+		mi := &file_service_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -499,7 +660,7 @@ func (x *SetBackgroundColorRequest) String() string {
 func (*SetBackgroundColorRequest) ProtoMessage() {}
 
 func (x *SetBackgroundColorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[10]
+	mi := &file_service_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -512,7 +673,7 @@ func (x *SetBackgroundColorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetBackgroundColorRequest.ProtoReflect.Descriptor instead.
 func (*SetBackgroundColorRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{10}
+	return file_service_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SetBackgroundColorRequest) GetColor() string {
@@ -531,7 +692,7 @@ type SetBackgroundColorResponse struct {
 func (x *SetBackgroundColorResponse) Reset() {
 	*x = SetBackgroundColorResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[11]
+		mi := &file_service_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -544,7 +705,7 @@ func (x *SetBackgroundColorResponse) String() string {
 func (*SetBackgroundColorResponse) ProtoMessage() {}
 
 func (x *SetBackgroundColorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[11]
+	mi := &file_service_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -557,7 +718,7 @@ func (x *SetBackgroundColorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetBackgroundColorResponse.ProtoReflect.Descriptor instead.
 func (*SetBackgroundColorResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{11}
+	return file_service_proto_rawDescGZIP(), []int{15}
 }
 
 type ToggleCollageRequest struct {
@@ -569,7 +730,7 @@ type ToggleCollageRequest struct {
 func (x *ToggleCollageRequest) Reset() {
 	*x = ToggleCollageRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[12]
+		mi := &file_service_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -582,7 +743,7 @@ func (x *ToggleCollageRequest) String() string {
 func (*ToggleCollageRequest) ProtoMessage() {}
 
 func (x *ToggleCollageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[12]
+	mi := &file_service_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -595,7 +756,7 @@ func (x *ToggleCollageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ToggleCollageRequest.ProtoReflect.Descriptor instead.
 func (*ToggleCollageRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{12}
+	return file_service_proto_rawDescGZIP(), []int{16}
 }
 
 type ToggleCollageResponse struct {
@@ -609,7 +770,7 @@ type ToggleCollageResponse struct {
 func (x *ToggleCollageResponse) Reset() {
 	*x = ToggleCollageResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[13]
+		mi := &file_service_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -622,7 +783,7 @@ func (x *ToggleCollageResponse) String() string {
 func (*ToggleCollageResponse) ProtoMessage() {}
 
 func (x *ToggleCollageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[13]
+	mi := &file_service_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -635,7 +796,7 @@ func (x *ToggleCollageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ToggleCollageResponse.ProtoReflect.Descriptor instead.
 func (*ToggleCollageResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{13}
+	return file_service_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ToggleCollageResponse) GetEnabled() bool {
@@ -654,7 +815,7 @@ type ListFoldersRequest struct {
 func (x *ListFoldersRequest) Reset() {
 	*x = ListFoldersRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[14]
+		mi := &file_service_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -667,7 +828,7 @@ func (x *ListFoldersRequest) String() string {
 func (*ListFoldersRequest) ProtoMessage() {}
 
 func (x *ListFoldersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[14]
+	mi := &file_service_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -680,7 +841,7 @@ func (x *ListFoldersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListFoldersRequest.ProtoReflect.Descriptor instead.
 func (*ListFoldersRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{14}
+	return file_service_proto_rawDescGZIP(), []int{18}
 }
 
 type ListFoldersResponse struct {
@@ -694,7 +855,7 @@ type ListFoldersResponse struct {
 func (x *ListFoldersResponse) Reset() {
 	*x = ListFoldersResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[15]
+		mi := &file_service_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -707,7 +868,7 @@ func (x *ListFoldersResponse) String() string {
 func (*ListFoldersResponse) ProtoMessage() {}
 
 func (x *ListFoldersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[15]
+	mi := &file_service_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -720,7 +881,7 @@ func (x *ListFoldersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListFoldersResponse.ProtoReflect.Descriptor instead.
 func (*ListFoldersResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{15}
+	return file_service_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListFoldersResponse) GetFolders() []string {
@@ -741,7 +902,7 @@ type AddFolderRequest struct {
 func (x *AddFolderRequest) Reset() {
 	*x = AddFolderRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[16]
+		mi := &file_service_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -754,7 +915,7 @@ func (x *AddFolderRequest) String() string {
 func (*AddFolderRequest) ProtoMessage() {}
 
 func (x *AddFolderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[16]
+	mi := &file_service_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -767,7 +928,7 @@ func (x *AddFolderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddFolderRequest.ProtoReflect.Descriptor instead.
 func (*AddFolderRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{16}
+	return file_service_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *AddFolderRequest) GetFolder() string {
@@ -786,7 +947,7 @@ type AddFolderResponse struct {
 func (x *AddFolderResponse) Reset() {
 	*x = AddFolderResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[17]
+		mi := &file_service_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -799,7 +960,7 @@ func (x *AddFolderResponse) String() string {
 func (*AddFolderResponse) ProtoMessage() {}
 
 func (x *AddFolderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[17]
+	mi := &file_service_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -812,7 +973,7 @@ func (x *AddFolderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddFolderResponse.ProtoReflect.Descriptor instead.
 func (*AddFolderResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{17}
+	return file_service_proto_rawDescGZIP(), []int{21}
 }
 
 type RemoveFolderRequest struct {
@@ -820,13 +981,13 @@ type RemoveFolderRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FolderIndex int32 `protobuf:"varint,1,opt,name=folder_index,json=folderIndex,proto3" json:"folder_index,omitempty"`
+	FolderPath string `protobuf:"bytes,1,opt,name=folder_path,json=folderPath,proto3" json:"folder_path,omitempty"`
 }
 
 func (x *RemoveFolderRequest) Reset() {
 	*x = RemoveFolderRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[18]
+		mi := &file_service_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -839,7 +1000,7 @@ func (x *RemoveFolderRequest) String() string {
 func (*RemoveFolderRequest) ProtoMessage() {}
 
 func (x *RemoveFolderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[18]
+	mi := &file_service_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -852,14 +1013,14 @@ func (x *RemoveFolderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveFolderRequest.ProtoReflect.Descriptor instead.
 func (*RemoveFolderRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{18}
+	return file_service_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *RemoveFolderRequest) GetFolderIndex() int32 {
+func (x *RemoveFolderRequest) GetFolderPath() string {
 	if x != nil {
-		return x.FolderIndex
+		return x.FolderPath
 	}
-	return 0
+	return ""
 }
 
 type RemoveFolderResponse struct {
@@ -873,7 +1034,7 @@ type RemoveFolderResponse struct {
 func (x *RemoveFolderResponse) Reset() {
 	*x = RemoveFolderResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[19]
+		mi := &file_service_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -886,7 +1047,7 @@ func (x *RemoveFolderResponse) String() string {
 func (*RemoveFolderResponse) ProtoMessage() {}
 
 func (x *RemoveFolderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[19]
+	mi := &file_service_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -899,7 +1060,7 @@ func (x *RemoveFolderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveFolderResponse.ProtoReflect.Descriptor instead.
 func (*RemoveFolderResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{19}
+	return file_service_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *RemoveFolderResponse) GetFolders() []string {
@@ -917,62 +1078,75 @@ var file_service_proto_rawDesc = []byte{
 	0x65, 0x73, 0x74, 0x22, 0x0f, 0x0a, 0x0d, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x0d, 0x0a, 0x0b, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x22, 0x0e, 0x0a, 0x0c, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x22, 0x0f, 0x0a, 0x0d, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x22, 0xf3, 0x01, 0x0a, 0x0e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x66, 0x6f, 0x6c, 0x64, 0x65,
-	0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x12,
-	0x14, 0x0a, 0x05, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05,
-	0x64, 0x65, 0x6c, 0x61, 0x79, 0x12, 0x29, 0x0a, 0x10, 0x62, 0x61, 0x63, 0x6b, 0x67, 0x72, 0x6f,
-	0x75, 0x6e, 0x64, 0x5f, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0f, 0x62, 0x61, 0x63, 0x6b, 0x67, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x43, 0x6f, 0x6c, 0x6f, 0x72,
-	0x12, 0x23, 0x0a, 0x0d, 0x68, 0x69, 0x64, 0x64, 0x65, 0x6e, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65,
-	0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0c, 0x68, 0x69, 0x64, 0x64, 0x65, 0x6e, 0x49,
-	0x6d, 0x61, 0x67, 0x65, 0x73, 0x12, 0x2a, 0x0a, 0x11, 0x6e, 0x6f, 0x6e, 0x5f, 0x68, 0x69, 0x64,
-	0x64, 0x65, 0x6e, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08,
-	0x52, 0x0f, 0x6e, 0x6f, 0x6e, 0x48, 0x69, 0x64, 0x64, 0x65, 0x6e, 0x49, 0x6d, 0x61, 0x67, 0x65,
-	0x73, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x18, 0x06, 0x20, 0x01,
-	0x28, 0x08, 0x52, 0x07, 0x63, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x69,
-	0x73, 0x5f, 0x72, 0x75, 0x6e, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x07, 0x20, 0x01, 0x28, 0x08, 0x52,
-	0x09, 0x69, 0x73, 0x52, 0x75, 0x6e, 0x6e, 0x69, 0x6e, 0x67, 0x22, 0x27, 0x0a, 0x0f, 0x53, 0x65,
-	0x74, 0x44, 0x65, 0x6c, 0x61, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a,
-	0x05, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x64, 0x65,
-	0x6c, 0x61, 0x79, 0x22, 0x12, 0x0a, 0x10, 0x53, 0x65, 0x74, 0x44, 0x65, 0x6c, 0x61, 0x79, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2a, 0x0a, 0x10, 0x53, 0x65, 0x74, 0x46, 0x6f,
-	0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x66,
+	0x6e, 0x73, 0x65, 0x22, 0x0f, 0x0a, 0x0d, 0x52, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x22, 0x10, 0x0a, 0x0e, 0x52, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x0a, 0x11, 0x53, 0x6f, 0x6c, 0x69, 0x64, 0x43,
+	0x6f, 0x6c, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x63,
+	0x6f, 0x6c, 0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x63, 0x6f, 0x6c, 0x6f,
+	0x72, 0x22, 0x14, 0x0a, 0x12, 0x53, 0x6f, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6c, 0x6f, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x0f, 0x0a, 0x0d, 0x53, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0xf3, 0x01, 0x0a, 0x0e, 0x53, 0x74, 0x61,
+	0x74, 0x75, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x66,
 	0x6f, 0x6c, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x66, 0x6f, 0x6c,
-	0x64, 0x65, 0x72, 0x22, 0x13, 0x0a, 0x11, 0x53, 0x65, 0x74, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x31, 0x0a, 0x19, 0x53, 0x65, 0x74, 0x42,
-	0x61, 0x63, 0x6b, 0x67, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x43, 0x6f, 0x6c, 0x6f, 0x72, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x22, 0x1c, 0x0a, 0x1a, 0x53,
-	0x65, 0x74, 0x42, 0x61, 0x63, 0x6b, 0x67, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x43, 0x6f, 0x6c, 0x6f,
-	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x16, 0x0a, 0x14, 0x54, 0x6f, 0x67,
-	0x67, 0x6c, 0x65, 0x43, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x22, 0x31, 0x0a, 0x15, 0x54, 0x6f, 0x67, 0x67, 0x6c, 0x65, 0x43, 0x6f, 0x6c, 0x6c, 0x61,
-	0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x65, 0x6e,
-	0x61, 0x62, 0x6c, 0x65, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x65, 0x6e, 0x61,
-	0x62, 0x6c, 0x65, 0x64, 0x22, 0x14, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x6f, 0x6c, 0x64,
-	0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x2f, 0x0a, 0x13, 0x4c, 0x69,
-	0x73, 0x74, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x18, 0x0a, 0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03,
-	0x28, 0x09, 0x52, 0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x22, 0x2a, 0x0a, 0x10, 0x41,
-	0x64, 0x64, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x64, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x05, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x12, 0x29, 0x0a, 0x10, 0x62, 0x61, 0x63,
+	0x6b, 0x67, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x5f, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0f, 0x62, 0x61, 0x63, 0x6b, 0x67, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x43,
+	0x6f, 0x6c, 0x6f, 0x72, 0x12, 0x23, 0x0a, 0x0d, 0x68, 0x69, 0x64, 0x64, 0x65, 0x6e, 0x5f, 0x69,
+	0x6d, 0x61, 0x67, 0x65, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0c, 0x68, 0x69, 0x64,
+	0x64, 0x65, 0x6e, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x12, 0x2a, 0x0a, 0x11, 0x6e, 0x6f, 0x6e,
+	0x5f, 0x68, 0x69, 0x64, 0x64, 0x65, 0x6e, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x18, 0x05,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x0f, 0x6e, 0x6f, 0x6e, 0x48, 0x69, 0x64, 0x64, 0x65, 0x6e, 0x49,
+	0x6d, 0x61, 0x67, 0x65, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65,
+	0x18, 0x06, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x63, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x12,
+	0x1d, 0x0a, 0x0a, 0x69, 0x73, 0x5f, 0x72, 0x75, 0x6e, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x07, 0x20,
+	0x01, 0x28, 0x08, 0x52, 0x09, 0x69, 0x73, 0x52, 0x75, 0x6e, 0x6e, 0x69, 0x6e, 0x67, 0x22, 0x27,
+	0x0a, 0x0f, 0x53, 0x65, 0x74, 0x44, 0x65, 0x6c, 0x61, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x05, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x22, 0x12, 0x0a, 0x10, 0x53, 0x65, 0x74, 0x44, 0x65,
+	0x6c, 0x61, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2a, 0x0a, 0x10, 0x53,
+	0x65, 0x74, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
 	0x16, 0x0a, 0x06, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x06, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x22, 0x13, 0x0a, 0x11, 0x41, 0x64, 0x64, 0x46, 0x6f,
-	0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x38, 0x0a, 0x13,
-	0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x5f, 0x69, 0x6e,
-	0x64, 0x65, 0x78, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x66, 0x6f, 0x6c, 0x64, 0x65,
-	0x72, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x22, 0x30, 0x0a, 0x14, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65,
-	0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18,
-	0x0a, 0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52,
-	0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x32, 0xa6, 0x04, 0x0a, 0x0b, 0x57, 0x61, 0x6c,
-	0x6c, 0x43, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x12, 0x2c, 0x0a, 0x05, 0x53, 0x74, 0x61, 0x72,
-	0x74, 0x12, 0x10, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x29, 0x0a, 0x04, 0x53, 0x74, 0x6f, 0x70, 0x12, 0x0f,
-	0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x10, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x06, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x22, 0x13, 0x0a, 0x11, 0x53, 0x65, 0x74, 0x46, 0x6f,
+	0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x31, 0x0a, 0x19,
+	0x53, 0x65, 0x74, 0x42, 0x61, 0x63, 0x6b, 0x67, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x43, 0x6f, 0x6c,
+	0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x6c,
+	0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x22,
+	0x1c, 0x0a, 0x1a, 0x53, 0x65, 0x74, 0x42, 0x61, 0x63, 0x6b, 0x67, 0x72, 0x6f, 0x75, 0x6e, 0x64,
+	0x43, 0x6f, 0x6c, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x16, 0x0a,
+	0x14, 0x54, 0x6f, 0x67, 0x67, 0x6c, 0x65, 0x43, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x31, 0x0a, 0x15, 0x54, 0x6f, 0x67, 0x67, 0x6c, 0x65, 0x43,
+	0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18,
+	0x0a, 0x07, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x07, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x22, 0x14, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74,
+	0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x2f,
+	0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x22,
+	0x2a, 0x0a, 0x10, 0x41, 0x64, 0x64, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x22, 0x13, 0x0a, 0x11, 0x41,
+	0x64, 0x64, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x36, 0x0a, 0x13, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x66, 0x6f, 0x6c, 0x64, 0x65,
+	0x72, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x66, 0x6f,
+	0x6c, 0x64, 0x65, 0x72, 0x50, 0x61, 0x74, 0x68, 0x22, 0x30, 0x0a, 0x14, 0x52, 0x65, 0x6d, 0x6f,
+	0x76, 0x65, 0x46, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x18, 0x0a, 0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x09, 0x52, 0x07, 0x66, 0x6f, 0x6c, 0x64, 0x65, 0x72, 0x73, 0x32, 0x94, 0x05, 0x0a, 0x0b, 0x57,
+	0x61, 0x6c, 0x6c, 0x43, 0x6f, 0x6c, 0x6c, 0x61, 0x67, 0x65, 0x12, 0x2c, 0x0a, 0x05, 0x53, 0x74,
+	0x61, 0x72, 0x74, 0x12, 0x10, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x29, 0x0a, 0x04, 0x53, 0x74, 0x6f, 0x70,
+	0x12, 0x0f, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x10, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x2f, 0x0a, 0x06, 0x52, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x12, 0x11, 0x2e,
+	0x70, 0x62, 0x2e, 0x52, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x12, 0x2e, 0x70, 0x62, 0x2e, 0x52, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3b, 0x0a, 0x0a, 0x53, 0x6f, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6c,
+	0x6f, 0x72, 0x12, 0x15, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x6f, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6c,
+	0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x70, 0x62, 0x2e, 0x53,
+	0x6f, 0x6c, 0x69, 0x64, 0x43, 0x6f, 0x6c, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
 	0x65, 0x12, 0x2f, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x11, 0x2e, 0x70, 0x62,
 	0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12,
 	0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
@@ -1017,50 +1191,58 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_service_proto_goTypes = []any{
 	(*StartRequest)(nil),               // 0: pb.StartRequest
 	(*StartResponse)(nil),              // 1: pb.StartResponse
 	(*StopRequest)(nil),                // 2: pb.StopRequest
 	(*StopResponse)(nil),               // 3: pb.StopResponse
-	(*StatusRequest)(nil),              // 4: pb.StatusRequest
-	(*StatusResponse)(nil),             // 5: pb.StatusResponse
-	(*SetDelayRequest)(nil),            // 6: pb.SetDelayRequest
-	(*SetDelayResponse)(nil),           // 7: pb.SetDelayResponse
-	(*SetFolderRequest)(nil),           // 8: pb.SetFolderRequest
-	(*SetFolderResponse)(nil),          // 9: pb.SetFolderResponse
-	(*SetBackgroundColorRequest)(nil),  // 10: pb.SetBackgroundColorRequest
-	(*SetBackgroundColorResponse)(nil), // 11: pb.SetBackgroundColorResponse
-	(*ToggleCollageRequest)(nil),       // 12: pb.ToggleCollageRequest
-	(*ToggleCollageResponse)(nil),      // 13: pb.ToggleCollageResponse
-	(*ListFoldersRequest)(nil),         // 14: pb.ListFoldersRequest
-	(*ListFoldersResponse)(nil),        // 15: pb.ListFoldersResponse
-	(*AddFolderRequest)(nil),           // 16: pb.AddFolderRequest
-	(*AddFolderResponse)(nil),          // 17: pb.AddFolderResponse
-	(*RemoveFolderRequest)(nil),        // 18: pb.RemoveFolderRequest
-	(*RemoveFolderResponse)(nil),       // 19: pb.RemoveFolderResponse
+	(*RandomRequest)(nil),              // 4: pb.RandomRequest
+	(*RandomResponse)(nil),             // 5: pb.RandomResponse
+	(*SolidColorRequest)(nil),          // 6: pb.SolidColorRequest
+	(*SolidColorResponse)(nil),         // 7: pb.SolidColorResponse
+	(*StatusRequest)(nil),              // 8: pb.StatusRequest
+	(*StatusResponse)(nil),             // 9: pb.StatusResponse
+	(*SetDelayRequest)(nil),            // 10: pb.SetDelayRequest
+	(*SetDelayResponse)(nil),           // 11: pb.SetDelayResponse
+	(*SetFolderRequest)(nil),           // 12: pb.SetFolderRequest
+	(*SetFolderResponse)(nil),          // 13: pb.SetFolderResponse
+	(*SetBackgroundColorRequest)(nil),  // 14: pb.SetBackgroundColorRequest
+	(*SetBackgroundColorResponse)(nil), // 15: pb.SetBackgroundColorResponse
+	(*ToggleCollageRequest)(nil),       // 16: pb.ToggleCollageRequest
+	(*ToggleCollageResponse)(nil),      // 17: pb.ToggleCollageResponse
+	(*ListFoldersRequest)(nil),         // 18: pb.ListFoldersRequest
+	(*ListFoldersResponse)(nil),        // 19: pb.ListFoldersResponse
+	(*AddFolderRequest)(nil),           // 20: pb.AddFolderRequest
+	(*AddFolderResponse)(nil),          // 21: pb.AddFolderResponse
+	(*RemoveFolderRequest)(nil),        // 22: pb.RemoveFolderRequest
+	(*RemoveFolderResponse)(nil),       // 23: pb.RemoveFolderResponse
 }
 var file_service_proto_depIdxs = []int32{
 	0,  // 0: pb.WallCollage.Start:input_type -> pb.StartRequest
 	2,  // 1: pb.WallCollage.Stop:input_type -> pb.StopRequest
-	4,  // 2: pb.WallCollage.Status:input_type -> pb.StatusRequest
-	6,  // 3: pb.WallCollage.SetDelay:input_type -> pb.SetDelayRequest
-	10, // 4: pb.WallCollage.SetBackgroundColor:input_type -> pb.SetBackgroundColorRequest
-	12, // 5: pb.WallCollage.ToggleCollage:input_type -> pb.ToggleCollageRequest
-	14, // 6: pb.WallCollage.ListFolders:input_type -> pb.ListFoldersRequest
-	16, // 7: pb.WallCollage.AddFolder:input_type -> pb.AddFolderRequest
-	18, // 8: pb.WallCollage.RemoveFolder:input_type -> pb.RemoveFolderRequest
-	1,  // 9: pb.WallCollage.Start:output_type -> pb.StartResponse
-	3,  // 10: pb.WallCollage.Stop:output_type -> pb.StopResponse
-	5,  // 11: pb.WallCollage.Status:output_type -> pb.StatusResponse
-	7,  // 12: pb.WallCollage.SetDelay:output_type -> pb.SetDelayResponse
-	11, // 13: pb.WallCollage.SetBackgroundColor:output_type -> pb.SetBackgroundColorResponse
-	13, // 14: pb.WallCollage.ToggleCollage:output_type -> pb.ToggleCollageResponse
-	15, // 15: pb.WallCollage.ListFolders:output_type -> pb.ListFoldersResponse
-	17, // 16: pb.WallCollage.AddFolder:output_type -> pb.AddFolderResponse
-	19, // 17: pb.WallCollage.RemoveFolder:output_type -> pb.RemoveFolderResponse
-	9,  // [9:18] is the sub-list for method output_type
-	0,  // [0:9] is the sub-list for method input_type
+	4,  // 2: pb.WallCollage.Random:input_type -> pb.RandomRequest
+	6,  // 3: pb.WallCollage.SolidColor:input_type -> pb.SolidColorRequest
+	8,  // 4: pb.WallCollage.Status:input_type -> pb.StatusRequest
+	10, // 5: pb.WallCollage.SetDelay:input_type -> pb.SetDelayRequest
+	14, // 6: pb.WallCollage.SetBackgroundColor:input_type -> pb.SetBackgroundColorRequest
+	16, // 7: pb.WallCollage.ToggleCollage:input_type -> pb.ToggleCollageRequest
+	18, // 8: pb.WallCollage.ListFolders:input_type -> pb.ListFoldersRequest
+	20, // 9: pb.WallCollage.AddFolder:input_type -> pb.AddFolderRequest
+	22, // 10: pb.WallCollage.RemoveFolder:input_type -> pb.RemoveFolderRequest
+	1,  // 11: pb.WallCollage.Start:output_type -> pb.StartResponse
+	3,  // 12: pb.WallCollage.Stop:output_type -> pb.StopResponse
+	5,  // 13: pb.WallCollage.Random:output_type -> pb.RandomResponse
+	7,  // 14: pb.WallCollage.SolidColor:output_type -> pb.SolidColorResponse
+	9,  // 15: pb.WallCollage.Status:output_type -> pb.StatusResponse
+	11, // 16: pb.WallCollage.SetDelay:output_type -> pb.SetDelayResponse
+	15, // 17: pb.WallCollage.SetBackgroundColor:output_type -> pb.SetBackgroundColorResponse
+	17, // 18: pb.WallCollage.ToggleCollage:output_type -> pb.ToggleCollageResponse
+	19, // 19: pb.WallCollage.ListFolders:output_type -> pb.ListFoldersResponse
+	21, // 20: pb.WallCollage.AddFolder:output_type -> pb.AddFolderResponse
+	23, // 21: pb.WallCollage.RemoveFolder:output_type -> pb.RemoveFolderResponse
+	11, // [11:22] is the sub-list for method output_type
+	0,  // [0:11] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -1121,7 +1303,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[4].Exporter = func(v any, i int) any {
-			switch v := v.(*StatusRequest); i {
+			switch v := v.(*RandomRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1133,7 +1315,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[5].Exporter = func(v any, i int) any {
-			switch v := v.(*StatusResponse); i {
+			switch v := v.(*RandomResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1145,7 +1327,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[6].Exporter = func(v any, i int) any {
-			switch v := v.(*SetDelayRequest); i {
+			switch v := v.(*SolidColorRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1157,7 +1339,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[7].Exporter = func(v any, i int) any {
-			switch v := v.(*SetDelayResponse); i {
+			switch v := v.(*SolidColorResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1169,7 +1351,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[8].Exporter = func(v any, i int) any {
-			switch v := v.(*SetFolderRequest); i {
+			switch v := v.(*StatusRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1181,7 +1363,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[9].Exporter = func(v any, i int) any {
-			switch v := v.(*SetFolderResponse); i {
+			switch v := v.(*StatusResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1193,7 +1375,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[10].Exporter = func(v any, i int) any {
-			switch v := v.(*SetBackgroundColorRequest); i {
+			switch v := v.(*SetDelayRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1205,7 +1387,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[11].Exporter = func(v any, i int) any {
-			switch v := v.(*SetBackgroundColorResponse); i {
+			switch v := v.(*SetDelayResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1217,7 +1399,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[12].Exporter = func(v any, i int) any {
-			switch v := v.(*ToggleCollageRequest); i {
+			switch v := v.(*SetFolderRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1229,7 +1411,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[13].Exporter = func(v any, i int) any {
-			switch v := v.(*ToggleCollageResponse); i {
+			switch v := v.(*SetFolderResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1241,7 +1423,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[14].Exporter = func(v any, i int) any {
-			switch v := v.(*ListFoldersRequest); i {
+			switch v := v.(*SetBackgroundColorRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1253,7 +1435,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[15].Exporter = func(v any, i int) any {
-			switch v := v.(*ListFoldersResponse); i {
+			switch v := v.(*SetBackgroundColorResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1265,7 +1447,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[16].Exporter = func(v any, i int) any {
-			switch v := v.(*AddFolderRequest); i {
+			switch v := v.(*ToggleCollageRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1277,7 +1459,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[17].Exporter = func(v any, i int) any {
-			switch v := v.(*AddFolderResponse); i {
+			switch v := v.(*ToggleCollageResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1289,7 +1471,7 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[18].Exporter = func(v any, i int) any {
-			switch v := v.(*RemoveFolderRequest); i {
+			switch v := v.(*ListFoldersRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1301,6 +1483,54 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[19].Exporter = func(v any, i int) any {
+			switch v := v.(*ListFoldersResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[20].Exporter = func(v any, i int) any {
+			switch v := v.(*AddFolderRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[21].Exporter = func(v any, i int) any {
+			switch v := v.(*AddFolderResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[22].Exporter = func(v any, i int) any {
+			switch v := v.(*RemoveFolderRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[23].Exporter = func(v any, i int) any {
 			switch v := v.(*RemoveFolderResponse); i {
 			case 0:
 				return &v.state
@@ -1319,7 +1549,7 @@ func file_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

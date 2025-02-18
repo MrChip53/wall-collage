@@ -21,6 +21,8 @@ const _ = grpc.SupportPackageIsVersion8
 const (
 	WallCollage_Start_FullMethodName              = "/pb.WallCollage/Start"
 	WallCollage_Stop_FullMethodName               = "/pb.WallCollage/Stop"
+	WallCollage_Random_FullMethodName             = "/pb.WallCollage/Random"
+	WallCollage_SolidColor_FullMethodName         = "/pb.WallCollage/SolidColor"
 	WallCollage_Status_FullMethodName             = "/pb.WallCollage/Status"
 	WallCollage_SetDelay_FullMethodName           = "/pb.WallCollage/SetDelay"
 	WallCollage_SetBackgroundColor_FullMethodName = "/pb.WallCollage/SetBackgroundColor"
@@ -36,6 +38,8 @@ const (
 type WallCollageClient interface {
 	Start(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*StartResponse, error)
 	Stop(ctx context.Context, in *StopRequest, opts ...grpc.CallOption) (*StopResponse, error)
+	Random(ctx context.Context, in *RandomRequest, opts ...grpc.CallOption) (*RandomResponse, error)
+	SolidColor(ctx context.Context, in *SolidColorRequest, opts ...grpc.CallOption) (*SolidColorResponse, error)
 	Status(ctx context.Context, in *StatusRequest, opts ...grpc.CallOption) (*StatusResponse, error)
 	SetDelay(ctx context.Context, in *SetDelayRequest, opts ...grpc.CallOption) (*SetDelayResponse, error)
 	SetBackgroundColor(ctx context.Context, in *SetBackgroundColorRequest, opts ...grpc.CallOption) (*SetBackgroundColorResponse, error)
@@ -67,6 +71,26 @@ func (c *wallCollageClient) Stop(ctx context.Context, in *StopRequest, opts ...g
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(StopResponse)
 	err := c.cc.Invoke(ctx, WallCollage_Stop_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wallCollageClient) Random(ctx context.Context, in *RandomRequest, opts ...grpc.CallOption) (*RandomResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RandomResponse)
+	err := c.cc.Invoke(ctx, WallCollage_Random_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wallCollageClient) SolidColor(ctx context.Context, in *SolidColorRequest, opts ...grpc.CallOption) (*SolidColorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SolidColorResponse)
+	err := c.cc.Invoke(ctx, WallCollage_SolidColor_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -149,6 +173,8 @@ func (c *wallCollageClient) RemoveFolder(ctx context.Context, in *RemoveFolderRe
 type WallCollageServer interface {
 	Start(context.Context, *StartRequest) (*StartResponse, error)
 	Stop(context.Context, *StopRequest) (*StopResponse, error)
+	Random(context.Context, *RandomRequest) (*RandomResponse, error)
+	SolidColor(context.Context, *SolidColorRequest) (*SolidColorResponse, error)
 	Status(context.Context, *StatusRequest) (*StatusResponse, error)
 	SetDelay(context.Context, *SetDelayRequest) (*SetDelayResponse, error)
 	SetBackgroundColor(context.Context, *SetBackgroundColorRequest) (*SetBackgroundColorResponse, error)
@@ -168,6 +194,12 @@ func (UnimplementedWallCollageServer) Start(context.Context, *StartRequest) (*St
 }
 func (UnimplementedWallCollageServer) Stop(context.Context, *StopRequest) (*StopResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
+}
+func (UnimplementedWallCollageServer) Random(context.Context, *RandomRequest) (*RandomResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Random not implemented")
+}
+func (UnimplementedWallCollageServer) SolidColor(context.Context, *SolidColorRequest) (*SolidColorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SolidColor not implemented")
 }
 func (UnimplementedWallCollageServer) Status(context.Context, *StatusRequest) (*StatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Status not implemented")
@@ -235,6 +267,42 @@ func _WallCollage_Stop_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WallCollageServer).Stop(ctx, req.(*StopRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WallCollage_Random_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RandomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WallCollageServer).Random(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WallCollage_Random_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WallCollageServer).Random(ctx, req.(*RandomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WallCollage_SolidColor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SolidColorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WallCollageServer).SolidColor(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WallCollage_SolidColor_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WallCollageServer).SolidColor(ctx, req.(*SolidColorRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -379,6 +447,14 @@ var WallCollage_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Stop",
 			Handler:    _WallCollage_Stop_Handler,
+		},
+		{
+			MethodName: "Random",
+			Handler:    _WallCollage_Random_Handler,
+		},
+		{
+			MethodName: "SolidColor",
+			Handler:    _WallCollage_SolidColor_Handler,
 		},
 		{
 			MethodName: "Status",
