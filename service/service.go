@@ -238,6 +238,15 @@ func (s *service) Stop(ctx context.Context, in *pb.StopRequest) (*pb.StopRespons
 	return &pb.StopResponse{}, nil
 }
 
+func (s *service) Random(ctx context.Context, in *pb.RandomRequest) (*pb.RandomResponse, error) {
+	s.sendNotification("Wall Collage", "Setting random wallpaper")
+	err := s.setWallpaper(s.imgs)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.RandomResponse{}, nil
+}
+
 func (s *service) Status(ctx context.Context, in *pb.StatusRequest) (*pb.StatusResponse, error) {
 	log.Printf("Status request received")
 	return &pb.StatusResponse{
