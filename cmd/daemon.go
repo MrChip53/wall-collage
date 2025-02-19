@@ -7,10 +7,13 @@ import (
 	"net"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 
+	"wall-collage/client"
+	"wall-collage/notif"
 	"wall-collage/pb"
 	"wall-collage/service"
 )
@@ -29,6 +32,22 @@ var daemonCmd = &cobra.Command{
 			return
 		} else if strings.HasSuffix(folderPath, "/") {
 			folderPath = folderPath[:len(folderPath)-1]
+		}
+
+		if _, err := os.Stat(socketPath); err == nil {
+			if client, conn, err := client.NewClientWithError(socketPath); err == nil {
+				defer conn.Close()
+				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+				defer cancel()
+
+				if _, err := client.Status(ctx, &pb.StatusRequest{}); err == nil {
+					if ns, err := notif.NewNotificationService(); err == nil {
+						ns.Notify("Wall Collage", "Wall Collage is already running")
+						ns.Close()
+					}
+					return
+				}
+			}
 		}
 
 		if err := os.RemoveAll(socketPath); err != nil {

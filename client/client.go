@@ -11,17 +11,22 @@ import (
 	"wall-collage/pb"
 )
 
-func NewClient(socketPath string) (pb.WallCollageClient, *grpc.ClientConn) {
+func NewClientWithError(socketPath string) (pb.WallCollageClient, *grpc.ClientConn, error) {
 	conn, err := grpc.NewClient("unix:"+socketPath,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithContextDialer(func(ctx context.Context, addr string) (net.Conn, error) {
 			return net.Dial("unix", socketPath)
 		}))
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
 
 	client := pb.NewWallCollageClient(conn)
 
+	return client, conn, err
+}
+
+func NewClient(socketPath string) (pb.WallCollageClient, *grpc.ClientConn) {
+	client, conn, err := NewClientWithError(socketPath)
+	if err != nil {
+		log.Fatalf("could not create client: %v", err)
+	}
 	return client, conn
 }
