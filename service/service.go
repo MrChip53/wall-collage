@@ -28,7 +28,7 @@ type service struct {
 	bgColor       string
 	enableCollage bool
 
-	imgs []string
+	imgCache Cache[[]string]
 
 	notificationService *notif.NotificationService
 
@@ -49,6 +49,7 @@ func NewService(folderPath string) (*service, error) {
 		delay:         5,
 		bgColor:       "#000000",
 		enableCollage: true,
+		imgCache:      NewImageCache(),
 		folders:       []string{folderPath},
 	}, nil
 }
@@ -92,7 +93,8 @@ func (s *service) collageLoop(ctx context.Context) {
 		case <-ctx.Done():
 			return
 		default:
-			err := s.setWallpaper(s.imgs)
+			imgs := s.imgCache.Get()
+			err := s.setWallpaper(imgs)
 			if err != nil {
 				log.Printf("Error setting wallpaper: %v", err)
 			}
@@ -177,7 +179,7 @@ func (s *service) scanFolders() {
 	defer s.lock.Unlock()
 
 	if len(s.folders) == 0 {
-		s.imgs = make([]string, 0)
+		s.imgCache.Clear()
 		return
 	}
 
@@ -192,7 +194,7 @@ func (s *service) scanFolders() {
 		imgs = append(imgs, imgPaths...)
 	}
 
-	s.imgs = imgs
+	s.imgCache.Set(imgs)
 }
 
 func (s *service) scanFolder(folder string) ([]string, error) {
@@ -240,7 +242,8 @@ func (s *service) Stop(ctx context.Context, in *pb.StopRequest) (*pb.StopRespons
 
 func (s *service) Random(ctx context.Context, in *pb.RandomRequest) (*pb.RandomResponse, error) {
 	s.sendNotification("Wall Collage", "Setting random wallpaper")
-	err := s.setWallpaper(s.imgs)
+	imgs := s.imgCache.Get()
+	err := s.setWallpaper(imgs)
 	if err != nil {
 		return nil, err
 	}
